@@ -1,0 +1,9 @@
+build/
+*.user
+*.exe
+*.dll
+*.o
+*.obj
+*.qm
+*.qmlc
+*.jsc
