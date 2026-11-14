@@ -43,6 +43,14 @@ Rectangle {
         }
 
         Button {
+            text: "История операций"
+            Layout.fillWidth: true
+            onClicked: {
+                historyText.text = currentAccount.showHistory().join("\n")
+            }
+        }
+
+        Button {
             text: "Выйти"
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: {
@@ -55,6 +63,14 @@ Rectangle {
             color: "#117A65"
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: 18
+        }
+
+        Text {
+            id: historyText
+            color: "#117A65"
+            anchors.horizontalCenter: parent.HorizontalCenter
+            font.pixelSize: 18
+            wrapMode: Text.Wrap
         }
     }
 }

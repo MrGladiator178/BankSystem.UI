@@ -1,6 +1,13 @@
 #include "account.h"
+#include <vector>
+#include <string>
+using namespace std;
 
 Account::Account(QObject* parent) : QObject(parent), m_balance(0), m_pin(0) {}
+
+void Account::addOperation(const QString& record) {
+    m_operations.append(record);
+}
 
 bool Account::correctDeposit(double sum) {
     if (sum <= 0) {
@@ -13,6 +20,7 @@ bool Account::correctDeposit(double sum) {
 void Account::deposit(double sum) {
     m_balance += sum;
     emit balanceChanged();
+    addOperation("Внесение наличных: " + QString::number(sum) + " рублей.");
 }
 
 bool Account::correctWithdraw(double sum) {
@@ -30,6 +38,7 @@ bool Account::correctWithdraw(double sum) {
 void Account::withdraw(double sum) {
     m_balance -= sum;
     emit balanceChanged();
+    addOperation("Снятие наличных: " + QString::number(sum) + " рублей.");
 }
 
 bool Account::checkPin(int pin) {

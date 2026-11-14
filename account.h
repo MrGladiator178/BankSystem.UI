@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QString>
+#include <QStringList>
+using namespace std;
 
 class Account : public QObject {
     Q_OBJECT
@@ -24,6 +26,7 @@ public:
     Q_INVOKABLE bool correctWithdraw(double sum);
     Q_INVOKABLE void withdraw(double sum);
     Q_INVOKABLE bool checkPin(int pin);
+    Q_INVOKABLE QStringList showHistory() const { return m_operations; };
 
 signals:
     void balanceChanged();
@@ -32,6 +35,9 @@ signals:
 protected:
     double m_balance;
     int m_pin;
+    QStringList m_operations;
+
+    void addOperation(const QString& record);
 };
 
 class CheckingAccount : public Account {

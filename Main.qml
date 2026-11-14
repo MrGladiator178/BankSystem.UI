@@ -4,7 +4,7 @@ import MyBank 1.0
 
 ApplicationWindow {
     visible: true
-    width: 400
+    width: 600
     height: 600
     title: "БАНКОМАТ"
 

@@ -5,8 +5,7 @@ import MyBank 1.0
 
 Rectangle {
     color: "#5DADE2"
-    property string accountType: ""
-    property var currentAccount: (accountType === "check") ? check : save
+    property var currentAccount: null
 
     ColumnLayout {
         spacing: 10

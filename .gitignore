@@ -7,3 +7,4 @@ build/
 *.qm
 *.qmlc
 *.jsc
+*.qmls.ini
