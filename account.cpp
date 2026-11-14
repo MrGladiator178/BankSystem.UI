@@ -2,29 +2,34 @@
 
 Account::Account(QObject* parent) : QObject(parent), m_balance(0), m_pin(0) {}
 
-bool Account::deposit(double sum) {
+bool Account::correctDeposit(double sum) {
     if (sum <= 0) {
         emit errorText("Введите положительную сумму!");
         return false;
     }
-    m_balance += sum;
-    emit balanceChanged();
     return true;
 }
 
-bool Account::withdraw(double sum) {
+void Account::deposit(double sum) {
+    m_balance += sum;
+    emit balanceChanged();
+}
+
+bool Account::correctWithdraw(double sum) {
     if (sum <= 0) {
         emit errorText("Сумма должна быть положительной");
         return false;
     }
-    int total = sum + getCommission(sum);
-    if (total > m_balance) {
+    if (sum > m_balance) {
         emit errorText("Недостаточно средств");
         return false;
     }
-    m_balance -= total;
-    emit balanceChanged();
     return true;
+}
+
+void Account::withdraw(double sum) {
+    m_balance -= sum;
+    emit balanceChanged();
 }
 
 bool Account::checkPin(int pin) {

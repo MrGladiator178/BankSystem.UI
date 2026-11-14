@@ -32,7 +32,8 @@ Rectangle {
             font.pixelSize: 15
             onClicked: {
                 var sum = parseInt(withdrawSumInput.text)
-                if (currentAccount.withdraw(sum)) {
+                if (currentAccount.correctWithdraw(sum)) {
+                    currentAccount.withdraw(sum)
                     withdrawSuccess.text = "Успешно выдано " + withdrawSumInput.text + " рублей"
                 }
             }

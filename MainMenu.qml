@@ -30,7 +30,7 @@ Rectangle {
             text: "Пополнить баланс"
             Layout.fillWidth: true
             onClicked: {
-                stack.push(depositingCashPage, {accountType: accountType })
+                stack.push(depositingCashPage, {currentAccount: currentAccount })
             }
         }
 
@@ -38,7 +38,7 @@ Rectangle {
             text: "Снять наличные"
             Layout.fillWidth: true
             onClicked: {
-                stack.push(withdrawingCashPage, {accountType: accountType })
+                stack.push(withdrawingCashPage, {currentAccount: currentAccount })
             }
         }
 

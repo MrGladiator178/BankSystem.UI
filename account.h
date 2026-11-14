@@ -19,8 +19,10 @@ public:
     virtual QString getAccountType() const = 0;
     virtual double getCommission(double sum) const = 0;
 
-    Q_INVOKABLE bool deposit(double sum);
-    Q_INVOKABLE bool withdraw(double sum);
+    Q_INVOKABLE bool correctDeposit(double sum);
+    Q_INVOKABLE void deposit(double sum);
+    Q_INVOKABLE bool correctWithdraw(double sum);
+    Q_INVOKABLE void withdraw(double sum);
     Q_INVOKABLE bool checkPin(int pin);
 
 signals:
@@ -37,7 +39,7 @@ class CheckingAccount : public Account {
 public:
     explicit CheckingAccount(QObject* parent = nullptr);
     double getCommission(double sum) const override {
-        return 0.01;
+        return sum * 0.01;
     }
     QString getAccountType() const override {
         return "Расчётный";
@@ -49,7 +51,7 @@ class SavingAccount : public Account {
 public:
     explicit SavingAccount(QObject* parent = nullptr);
     double getCommission(double sum) const override {
-        return 0.005;
+        return sum * 0.005;
     }
     QString getAccountType() const override {
         return "Сберегательный";

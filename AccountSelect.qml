@@ -12,6 +12,7 @@ Rectangle {
             text: "Выберите счёт"
             color: "white"
             Layout.alignment: Qt.AlignHCenter
+            font.pixelSize: 30
         }
 
         Button {

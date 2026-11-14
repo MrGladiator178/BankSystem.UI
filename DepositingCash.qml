@@ -30,10 +30,12 @@ Rectangle {
             font.pixelSize: 15
             Layout.fillWidth: true
             onClicked: {
-                var amount = parseInt(sumInput.text)
-                if (currentAccount.deposit(amount)) {
+                var sum = parseInt(sumInput.text)
+                if (currentAccount.correctDeposit(sum)) {
+                    currentAccount.deposit(sum)
                     depositSuccess.text = "Баланс пополнен на " + sumInput.text + " рублей"
                 }
+
             }
         }
 
@@ -45,7 +47,6 @@ Rectangle {
                 stack.pop()
             }
         }
-
 
         Text {
             id: depositSuccess
