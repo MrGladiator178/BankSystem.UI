@@ -34,6 +34,7 @@ Rectangle {
                 if (currentAccount.correctWithdraw(sum)) {
                     currentAccount.withdraw(sum)
                     withdrawSuccess.text = "Успешно выдано " + withdrawSumInput.text + " рублей"
+                    withsrawSumInput.text = ""
                 }
             }
         }

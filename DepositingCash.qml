@@ -33,6 +33,7 @@ Rectangle {
                 if (currentAccount.correctDeposit(sum)) {
                     currentAccount.deposit(sum)
                     depositSuccess.text = "Баланс пополнен на " + sumInput.text + " рублей"
+                    sumInput.text = ""
                 }
 
             }
